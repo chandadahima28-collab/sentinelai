@@ -1,0 +1,6 @@
+{
+  "name": "SentinelAI",
+  "description": "Autonomous Business Risk Intelligence and Decision Support Agent monitoring enterprise operations, cascading impacts, and proactive mitigation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
