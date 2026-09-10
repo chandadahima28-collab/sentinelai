@@ -43,6 +43,7 @@ export default function App() {
 
   // Active navigation tab
   const [activeTab, setActiveTab] = useState<'dashboard' | 'risks' | 'cascade' | 'simulator' | 'assistant' | 'audit' | 'erp'>('dashboard');
+  const [showWelcome, setShowWelcome] = useState(true);
 
   // Filter for risks tab
   const [riskSeverityFilter, setRiskSeverityFilter] = useState<'ALL' | 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>('ALL');
@@ -292,6 +293,40 @@ export default function App() {
       (r.category && r.category.toLowerCase().includes(riskSearchQuery.toLowerCase()));
     return matchesSeverity && matchesSearch;
   });
+  if (showWelcome) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-6">
+        <div className="w-full max-w-4xl text-center">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
+                <ShieldAlert className="w-10 h-10 text-cyan-400" />
+              </div>
+              <span className="text-3xl font-bold tracking-tight">SENTINEL<span className="text-cyan-400">AI</span></span>
+            </div>
+            <p className="text-cyan-400 text-sm font-semibold tracking-[0.25em] uppercase mb-4">Autonomous Business Risk Intelligence</p>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Detect. Predict. Prevent.</h1>
+            <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+              An autonomous AI platform that detects emerging business risks, predicts cascading impact, and recommends proactive decisions with human approval.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+            {["AI-Powered Risk Detection", "Cascading Impact Analysis", "What-If Simulation", "Human-in-the-Loop Governance"].map((item) => (
+              <div key={item} className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm text-slate-300">{item}</div>
+            ))}
+          </div>
+          <button
+            onClick={() => setShowWelcome(false)}
+            className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-8 py-4 font-semibold text-slate-950 hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20"
+          >
+            Enter SentinelAI
+            <ArrowRight className="w-5 h-5" />
+          </button>
+          <p className="mt-8 text-xs text-slate-500">Google Cloud • Gemini • BigQuery | Synthetic ERP Demo</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0B0F19] text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
