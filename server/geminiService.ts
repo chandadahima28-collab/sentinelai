@@ -210,7 +210,7 @@ Return your response in JSON format with:
       ]
     };
   } catch (error) {
-    console.error('Gemini chat error / rate limit fallback:', error);
+    console.error('Gemini chat error:', error instanceof Error ? error.message : error);
     const topRisk = snapshot.risks[0];
     const topRec = topRisk?.recommendations[0];
     return {
